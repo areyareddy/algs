@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-// GOT BITS WORKING AYYY
+
 using namespace std;
 int fill_random(vector<int>& lis) {
     for (int i = 0; i < 20; i++) {
