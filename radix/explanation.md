@@ -1,5 +1,5 @@
-radix sort works like this:
-[explanation to be added]
+radix sort works like this: \ 
+[explanation to be added] \
 Fundamentally, algorithms like quick sort or merge sort work by comparing elements, but radix sort operates not by comparing elements but reading bits and moving elements depending on that bit. In other words, each element of the list is "touched" only 32/b times, where b is the number of bits the sort buckets on at a time. 
 
 the best one in general is 8-bit radix sort (1 bit radix was my first implementation.)
