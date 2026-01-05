@@ -1,4 +1,5 @@
 // Source: https://usaco.guide/general/io
+// SET AMOUNT OF BITS IN THE CODE ON LINE 23
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,7 +18,7 @@ int print_list(vector<int> new_list) {
     return 0; 
 }
 
-// SET AMOUNT OF BITS AT A TIME HERE
+// SET AMOUNT OF BITS HERE
 
 int bits_at_a_time = 8;
 // must be a factor of 32
