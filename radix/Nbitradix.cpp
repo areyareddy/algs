@@ -1,4 +1,4 @@
-// 8 bit radix sort for 32 bit signed ints
+// Source: https://usaco.guide/general/io
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -16,18 +16,24 @@ int print_list(vector<int> new_list) {
     }
     return 0; 
 }
-// now it's 8-bit!
+
+// SET AMOUNT OF BITS AT A TIME HERE
+
+int bits_at_a_time = 8;
+// must be a factor of 32
+// don't set it to exactly 32 unless you wanna allocate 4 billion buckets into your RAM
+
 vector<int> sorter(vector<int> list) {
     int size = list.size();
     vector<int> final_list; 
-    vector<vector<int> > buckets(256);
-    for (int bit_shift = 0; bit_shift < 4; bit_shift++) {
+    vector<vector<int>> buckets(pow(2, bits_at_a_time));
+    for (int bit_shift = 0; bit_shift < 32/bits_at_a_time; bit_shift++) {
         for (int i = 0; i < size; i++) {
             int num = list[i];
             // num ^ (32 ones bit shifted 31 = 1 and 31 zeroes).  Taking xor we get something that flips the 1st bit. 
             int key = num^(1u << 31);
-            // we check in blocks of 8
-            buckets[((key >> 8*bit_shift) & 0b11111111)].push_back(num); 
+            // we check in blocks of bits_at_a_time, using & (11111...)to read bits
+            buckets[((key >> bits_at_a_time*bit_shift) & ((1 << bits_at_a_time) - 1))].push_back(num); 
         }
         // now read the buckets into final_list
         int size_buckets = buckets.size();
