@@ -1,6 +1,10 @@
+# Runs in O(k*log^3(n)) time where k is the number of rounds we want to run the test for.
+# Checking divisors is O(sqrt(n)) time, so this is much faster than that at high N.
 num = 2011
 import random 
 not_done = True 
+import time 
+start_time = time.time()
 
 def euclid_alg(a, b):
     while b:
@@ -18,6 +22,7 @@ while runs <= 5 and not_done == True:
     possible_guesses.remove(test)
     if euclid_alg(test, num) != 1:
         print("COMPOSITEEEEEEEEE")
+        end_time = time.time()
         not_done = False 
         continue 
     val1 = test**((num-1)//2)%num
@@ -42,6 +47,7 @@ while runs <= 5 and not_done == True:
     
     if val1 != val2%num:
         print("COMPOSITEEEEEEEEE")
+        end_time = time.time()
         not_done = False 
         continue 
     
@@ -49,4 +55,6 @@ while runs <= 5 and not_done == True:
 
 if not_done == True:
     print("PRIMEEEEEEEEEEEEE") 
+    end_time = time.time()
     
+print(f"Time taken: {end_time-start_time} seconds")
