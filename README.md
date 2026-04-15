@@ -1,5 +1,5 @@
-# sortingalgs
-repo of sorting algs
+# algs
+repo of general algorithms, including sorting algorithms and the Solovay-Strassen Primality Test. 
 
 After compiling your cpp file, run [./{name for compiled code} < data.txt > output.txt] to actually read and write data. 
 
